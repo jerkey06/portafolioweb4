@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Space Mono', monospace;
+}
+
+.neobrutalist-shadow {
+  box-shadow: 4px 4px 0 0 currentColor;
+}
+
+.neobrutalist-border {
+  @apply border-4;
+}
+
+.neobrutalist-button {
+  @apply neobrutalist-border neobrutalist-shadow transform active:translate-x-1 active:translate-y-1 active:shadow-none transition-all;
+}
+
+.dark {
+  @apply bg-zinc-900 text-zinc-100;
+}
+
+.dark .neobrutalist-border {
+  @apply border-zinc-100;
+}
+
+.dark .project-card {
+  @apply bg-violet-900 text-zinc-100 border-zinc-100;
+}
+
+.dark .project-tag {
+  @apply bg-violet-800 text-zinc-100 border-zinc-100;
+}
+
+.dark .contact-card {
+  @apply bg-violet-900 text-zinc-100;
+}
+
+.dark .availability-card {
+  @apply bg-violet-800 text-zinc-100;
+}
+
+.dark .experience-card {
+  @apply bg-violet-900 text-zinc-100;
+}
+
+.light {
+  @apply bg-zinc-50 text-zinc-900;
+}
+
+.light .neobrutalist-border {
+  @apply border-zinc-900;
+}
+
+.light .project-card {
+  @apply bg-violet-100 text-zinc-900 border-zinc-900;
+}
+
+.light .project-tag {
+  @apply bg-violet-200 text-zinc-900 border-zinc-900;
+}
+
+.light .contact-card {
+  @apply bg-violet-100 text-zinc-900;
+}
+
+.light .availability-card {
+  @apply bg-violet-200 text-zinc-900;
+}
+
+.light .experience-card {
+  @apply bg-violet-100 text-zinc-900;
+}
+
+/* Accordion animation */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-content.open {
+  max-height: 1000px;
+  transition: max-height 0.5s ease-in;
+}
+
+/* Swiper custom styles */
+.swiper-slide {
+  width: auto !important;
+}
+
+/* GitHub calendar customization */
+.react-activity-calendar {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.react-activity-calendar__day {
+  @apply border border-current;
+}
+
+.dark .react-activity-calendar__day {
+  @apply border-zinc-100;
+}
+
+.light .react-activity-calendar__day {
+  @apply border-zinc-900;
+}
