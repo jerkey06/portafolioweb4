@@ -34,9 +34,9 @@ function App() {
         <div ref={projectsRef}>
           <Projects id="projects" />
         </div>
-        <div ref={blogRef}>
+        {/*<div ref={blogRef}>
           <Blog id="blog" />
-        </div>
+        </div>*/}
         <div ref={aboutRef}>
           <About id="about" contactRef={contactRef} />
         </div>

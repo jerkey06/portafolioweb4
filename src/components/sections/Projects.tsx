@@ -25,7 +25,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-4xl font-bold mb-4">Projects</h2>
         <p className="text-xl opacity-80 mb-8">
-          A collection of projects showcasing my expertise in building scalable and efficient systems.
+          A collection of projects that I have carried out throughout my learning career.
         </p>
 
         {/* Filters */}
@@ -47,6 +47,9 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
               <option>Microservices</option>
               <option>Real-time Systems</option>
               <option>Machine Learning</option>
+              <option>E-commerce</option>
+              <option>RESTful APIs</option>
+              <option>IoT Integrations</option>
             </select>
             <select
               className="border-4 border-current bg-transparent px-4 py-2 focus:outline-none"

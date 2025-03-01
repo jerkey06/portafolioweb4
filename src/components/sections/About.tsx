@@ -17,10 +17,9 @@ export const About: React.FC<AboutProps> = ({ id, contactRef }) => {
             <h2 className="text-4xl font-bold mb-6">About Me</h2>
             <div className="space-y-4 opacity-80">
               <p>
-                With over 5 years of experience in backend development, I specialize in building scalable distributed systems and microservices architectures. My journey in software development began with a deep fascination for solving complex problems and has evolved into a passion for creating robust, efficient systems.
-              </p>
+                I am a junior programmer passionate about technology and developing innovative solutions. My training and my experiences in personal and collaborative projects have allowed me to acquire solid knowledge in languages such as Python, JavaScript and web development tools. I enjoy solving technical challenges and continually learning, which drives me to explore new technologies and agile methodologies that enhance the quality and efficiency of my projects.</p>
               <p>
-                I have extensive experience working with various technologies and frameworks, particularly in the Node.js and Python ecosystems. My expertise includes designing and implementing high-performance APIs, managing distributed databases, and orchestrating cloud infrastructure.
+                Committed to constant learning, I strive to transform ideas into functional and aesthetic applications, always focused on usability and the user experience. I am excited to be part of collaborative teams where I can bring my creativity and energy, while continuing to grow professionally in the dynamic world of software development.
               </p>
             </div>
 
@@ -37,33 +36,33 @@ export const About: React.FC<AboutProps> = ({ id, contactRef }) => {
               <h3 className="text-xl font-bold mb-4">Contact Information</h3>
               <div className="space-y-4">
                 <a 
-                  href="mailto:john.doe@example.com"
+                  href="mailto:contactojkemi@gmail.com"
                   className="flex items-center space-x-3 hover:underline decoration-4 underline-offset-4"
                 >
                   <Mail size={20} />
-                  <span>john.doe@example.com</span>
+                  <span>contacto@gmail.com</span>
                 </a>
                 <a 
-                  href="https://github.com/johndoe"
+                  href="github.com/jerkey06"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 hover:underline decoration-4 underline-offset-4"
                 >
                   <Github size={20} />
-                  <span>@johndoe</span>
+                  <span>@jerkey06</span>
                 </a>
                 <a 
-                  href="https://linkedin.com/in/johndoe"
+                  href="https://linkedin.com/in/emilianoponceg"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center space-x-3 hover:underline decoration-4 underline-offset-4"
                 >
                   <Linkedin size={20} />
-                  <span>John Doe</span>
+                  <span>Emiliano Ponce</span>
                 </a>
                 <div className="flex items-center space-x-3">
                   <MapPin size={20} />
-                  <span>San Francisco, CA</span>
+                  <span>Leon, Gto</span>
                 </div>
               </div>
             </div>

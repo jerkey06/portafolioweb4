@@ -9,18 +9,17 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
     <div className="pt-24 min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 py-20">
-        <div className="flex items-center">
-          <div className="flex-1">
-            <h1 className="text-6xl font-bold mb-4">
-              Backend<br />
-              Developer &<br />
-              System<br />
-              Architect
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="flex-1 text-center md:text-left">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4">
+              Junior<br />
+              Fullstack<br />
+              Developer <br />
             </h1>
-            <p className="text-xl mb-8 opacity-80">
-              Building robust, scalable, and efficient backend systems that power modern applications
+            <p className="text-lg md:text-xl mb-8 opacity-80">
+              whit a passion for building scalable and efficient systems.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col md:flex-row flex-wrap gap-4 items-center md:items-start">
               <button 
                 onClick={() => onNavigate('projects')}
                 className="neobrutalist-button bg-violet-400 text-zinc-900 px-6 py-3"
@@ -36,11 +35,12 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               <button className="neobrutalist-button bg-violet-200 text-zinc-900 px-6 py-3 flex items-center space-x-2">
                 <Download size={20} />
                 <span>Download CV</span>
+                <a href="/public\cv\rwservlet.pdf" download></a>
               </button>
             </div>
           </div>
-          <div className="flex-1 flex justify-center">
-            <Terminal size={300} className="transform -rotate-6" />
+          <div className="flex-1 flex justify-center mt-10 md:mt-0">
+            <Terminal size={200} className="transform -rotate-6" />
           </div>
         </div>
       </div>
