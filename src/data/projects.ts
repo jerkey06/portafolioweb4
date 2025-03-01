@@ -18,8 +18,7 @@ export const projects: Project[] = [
     type: 'Machine Learning',
     level: 'Intermediate',
     image: '',
-    githubUrl: 'https://github.com/tuUsuario/video-processor',
-    projectUrl: 'https://tuProyecto.com/demo'
+    githubUrl: 'https://github.com/jerkey06/video-processor',
   },
   // Otros proyectos...
 ];
