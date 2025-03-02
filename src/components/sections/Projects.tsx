@@ -76,8 +76,12 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
               onChange={(e) => setSelectedLanguage(e.target.value)}
             >
               <option>All Languages</option>
-              <option>Node.js</option>
+              <option>JavaScript</option>
+              <option>TypeScript</option>
               <option>Python</option>
+              <option>C#</option>
+              <option>PHP</option>
+              <option>Rust</option>
             </select>
           </div>
         </div>

@@ -27,7 +27,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         </div>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.map((tech, index) => (
-            <span key={index} className="border-2 border-current px-3 py-1 bg-primary-dark text-white">
+            <span key={index} className="project-tag neobrutalist-border px-3 py-1">
               {tech}
             </span>
           ))}
