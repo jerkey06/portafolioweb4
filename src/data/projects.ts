@@ -20,5 +20,25 @@ export const projects: Project[] = [
     image: '',
     githubUrl: 'https://github.com/jerkey06/video-processor',
   },
+  {
+    id: 2,
+    title: 'Weather Time App',
+    description: 'A modern web application that provides real-time weather information with an intuitive and attractive interface.',
+    keyFeatures: [
+      'Real-time weather forecasting',
+      'City-based location search',
+      'Detailed weather data visualization',
+      'Responsive and modern interface',
+      'Interactive temperature graphs'
+    ],
+    technologies: ['React', 'TypeScript', 'TailwindCSS', 'Weather API', 'Vercel'],
+    role: 'Frontend Developer',
+    year: 2024,
+    type: 'Web Application',
+    level: 'Intermediate',
+    image: '',
+    githubUrl: 'https://github.com/jerkey06/weather-time',
+    projectUrl: 'https://weather-time-mauve.vercel.app/'
+  },
   // Otros proyectos...
 ];
