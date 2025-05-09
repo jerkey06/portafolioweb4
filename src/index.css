@@ -27,23 +27,23 @@ body {
 }
 
 .dark .project-card {
-  @apply bg-violet-900 text-zinc-100 border-zinc-100;
+  @apply bg-zinc-800 text-zinc-100 border-zinc-100;
 }
 
 .dark .project-tag {
-  @apply bg-violet-800 text-zinc-100 border-zinc-100;
+  @apply bg-zinc-700 text-zinc-100 border-zinc-100;
 }
 
 .dark .contact-card {
-  @apply bg-violet-900 text-zinc-100;
+  @apply bg-zinc-800 text-zinc-100;
 }
 
 .dark .availability-card {
-  @apply bg-violet-800 text-zinc-100;
+  @apply bg-zinc-700 text-zinc-100;
 }
 
 .dark .experience-card {
-  @apply bg-violet-900 text-zinc-100;
+  @apply bg-zinc-800 text-zinc-100;
 }
 
 .light {
@@ -55,23 +55,23 @@ body {
 }
 
 .light .project-card {
-  @apply bg-violet-100 text-zinc-900 border-zinc-900;
+  @apply bg-white text-zinc-900 border-zinc-900;
 }
 
 .light .project-tag {
-  @apply bg-violet-200 text-zinc-900 border-zinc-900;
+  @apply bg-zinc-100 text-zinc-900 border-zinc-900;
 }
 
 .light .contact-card {
-  @apply bg-violet-100 text-zinc-900;
+  @apply bg-white text-zinc-900;
 }
 
 .light .availability-card {
-  @apply bg-violet-200 text-zinc-900;
+  @apply bg-zinc-100 text-zinc-900;
 }
 
 .light .experience-card {
-  @apply bg-violet-100 text-zinc-900;
+  @apply bg-white text-zinc-900;
 }
 
 /* Accordion animation */

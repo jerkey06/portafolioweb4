@@ -17,26 +17,29 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               Developer <br />
             </h1>
             <p className="text-lg md:text-xl mb-8 opacity-80">
-              whit a passion for building scalable and efficient systems.
+              with a passion for building scalable and efficient systems.
             </p>
             <div className="flex flex-col md:flex-row flex-wrap gap-4 items-center md:items-start">
               <button 
                 onClick={() => onNavigate('projects')}
-                className="neobrutalist-button bg-violet-400 text-zinc-900 px-6 py-3"
+                className="neobrutalist-button bg-primary-DEFAULT text-white px-6 py-3"
               >
                 View Projects
               </button>
               <button 
                 onClick={() => onNavigate('contact')}
-                className="neobrutalist-button bg-violet-300 text-zinc-900 px-6 py-3"
+                className="neobrutalist-button bg-secondary-DEFAULT text-white px-6 py-3"
               >
                 Contact Me
               </button>
-              <button className="neobrutalist-button bg-violet-200 text-zinc-900 px-6 py-3 flex items-center space-x-2">
+              <a 
+                href="/public/cv/rwservlet.pdf" 
+                download
+                className="neobrutalist-button bg-accent-DEFAULT text-white px-6 py-3 flex items-center space-x-2"
+              >
                 <Download size={20} />
                 <span>Download CV</span>
-                <a href="/public\cv\rwservlet.pdf" download></a>
-              </button>
+              </a>
             </div>
           </div>
           <div className="flex-1 flex justify-center mt-10 md:mt-0">
