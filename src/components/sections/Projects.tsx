@@ -33,13 +33,13 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
           <input
             type="text"
             placeholder="Search projects..."
-            className="w-full border-4 border-current bg-transparent px-4 py-2 focus:outline-none"
+            className="w-full border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="flex flex-wrap gap-4">
             <select
-              className="border-4 border-current bg-transparent px-4 py-2 focus:outline-none"
+              className="border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
             >
@@ -52,7 +52,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
               <option>IoT Integrations</option>
             </select>
             <select
-              className="border-4 border-current bg-transparent px-4 py-2 focus:outline-none"
+              className="border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
             >
@@ -62,7 +62,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
               <option>Advanced</option>
             </select>
             <select
-              className="border-4 border-current bg-transparent px-4 py-2 focus:outline-none"
+              className="border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
             >
@@ -71,7 +71,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
               <option>2022</option>
             </select>
             <select
-              className="border-4 border-current bg-transparent px-4 py-2 focus:outline-none"
+              className="border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
             >

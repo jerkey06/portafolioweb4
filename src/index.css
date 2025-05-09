@@ -74,6 +74,19 @@ body {
   @apply bg-white text-zinc-900;
 }
 
+/* Form elements in dark mode */
+.dark select option {
+  @apply bg-zinc-800 text-white;
+}
+
+.dark input::placeholder {
+  @apply text-zinc-400;
+}
+
+.light select option {
+  @apply bg-white text-zinc-900;
+}
+
 /* Accordion animation */
 .accordion-content {
   max-height: 0;
