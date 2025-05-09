@@ -18,7 +18,6 @@ body {
   @apply neobrutalist-border neobrutalist-shadow transform active:translate-x-1 active:translate-y-1 active:shadow-none transition-all;
 }
 
-/* Dark theme styles */
 .dark {
   @apply bg-zinc-900 text-zinc-100;
 }
@@ -47,7 +46,6 @@ body {
   @apply bg-zinc-800 text-zinc-100;
 }
 
-/* Light theme styles */
 .light {
   @apply bg-zinc-50 text-zinc-900;
 }
