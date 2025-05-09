@@ -40,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate('projects')}
-                className="neobrutalist-button bg-primary-DEFAULT text-white px-6 py-3"
+                className="neobrutalist-button bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 px-6 py-3"
               >
                 View Projects
               </motion.button>
@@ -48,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate('contact')}
-                className="neobrutalist-button bg-secondary-DEFAULT text-white px-6 py-3"
+                className="neobrutalist-button bg-zinc-800 dark:bg-zinc-200 text-white dark:text-zinc-900 px-6 py-3"
               >
                 Contact Me
               </motion.button>
@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 whileTap={{ scale: 0.95 }}
                 href="/public/cv/rwservlet.pdf" 
                 download
-                className="neobrutalist-button bg-accent-DEFAULT text-white px-6 py-3 flex items-center space-x-2"
+                className="neobrutalist-button bg-zinc-700 dark:bg-zinc-300 text-white dark:text-zinc-900 px-6 py-3 flex items-center space-x-2"
               >
                 <Download size={20} />
                 <span>Download CV</span>
