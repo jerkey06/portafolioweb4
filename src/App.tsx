@@ -29,17 +29,17 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen transition-colors duration-300 dark:bg-zinc-900/90 bg-zinc-50/90 dark:text-white text-zinc-900">
+      <div className="min-h-screen transition-colors duration-300 dark:bg-zinc-900/90 bg-zinc-50/90 dark:text-white text-zinc-900 relative z-10">
         <GameOfLife />
         <Header onNavigate={scrollToSection} />
         <Hero onNavigate={scrollToSection} />
-        <div ref={projectsRef}>
+        <div ref={projectsRef} className="relative z-10">
           <Projects id="projects" />
         </div>
         {/*<div ref={blogRef}>
           <Blog id="blog" />
         </div>*/}
-        <div ref={aboutRef}>
+        <div ref={aboutRef} className="relative z-10">
           <About id="about" contactRef={contactRef} />
         </div>
       </div>
