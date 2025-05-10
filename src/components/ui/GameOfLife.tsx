@@ -25,6 +25,8 @@ export const GameOfLife: React.FC = () => {
     let height = window.innerHeight;
     let cols = Math.floor(width / CELL_SIZE);
     let rows = Math.floor(height / CELL_SIZE);
+    let mouseX = -1;
+    let mouseY = -1;
     
     canvas.width = width;
     canvas.height = height;
@@ -45,6 +47,24 @@ export const GameOfLife: React.FC = () => {
       }
       sum -= grid[x][y] ? 1 : 0;
       return sum;
+    };
+
+    const createLifeAroundMouse = () => {
+      if (mouseX === -1 || mouseY === -1) return;
+      
+      const gridX = Math.floor(mouseX / CELL_SIZE);
+      const gridY = Math.floor(mouseY / CELL_SIZE);
+      
+      // Create a pattern around the mouse
+      for (let i = -2; i <= 2; i++) {
+        for (let j = -2; j <= 2; j++) {
+          const x = (gridX + i + cols) % cols;
+          const y = (gridY + j + rows) % rows;
+          if (Math.random() > 0.5) {
+            grid[x][y] = true;
+          }
+        }
+      }
     };
 
     const drawGrid = () => {
@@ -80,6 +100,7 @@ export const GameOfLife: React.FC = () => {
     };
 
     const updateGrid = () => {
+      createLifeAroundMouse();
       let next = grid.map(arr => [...arr]);
 
       for (let i = 0; i < cols; i++) {
@@ -111,10 +132,25 @@ export const GameOfLife: React.FC = () => {
       );
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+    };
+
+    const handleMouseLeave = () => {
+      mouseX = -1;
+      mouseY = -1;
+    };
+
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('resize', handleResize);
     const intervalId = setInterval(updateGrid, 200);
 
     return () => {
+      canvas.removeEventListener('mousemove', handleMouseMove);
+      canvas.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('resize', handleResize);
       clearInterval(intervalId);
     };
