@@ -5,7 +5,7 @@ import { Hero } from './components/sections/Hero';
 import { Projects } from './components/sections/Projects';
 import { Blog } from './components/sections/Blog';
 import { About } from './components/sections/About';
-import { GameOfLife } from './components/ui/GameOfLife';
+import { AnimatedBackground } from './components/ui/AnimatedBackground';
 
 function App() {
   const projectsRef = useRef<HTMLDivElement>(null);
@@ -30,15 +30,12 @@ function App() {
   return (
     <ThemeProvider>
       <div className="min-h-screen transition-colors duration-300 dark:bg-zinc-900/95 bg-zinc-50/95 dark:text-white text-zinc-900">
-        <GameOfLife />
+        <AnimatedBackground />
         <Header onNavigate={scrollToSection} />
         <Hero onNavigate={scrollToSection} />
         <div ref={projectsRef}>
           <Projects id="projects" />
         </div>
-        {/*<div ref={blogRef}>
-          <Blog id="blog" />
-        </div>*/}
         <div ref={aboutRef}>
           <About id="about" contactRef={contactRef} />
         </div>
@@ -46,5 +43,3 @@ function App() {
     </ThemeProvider>
   );
 }
-
-export default App;
