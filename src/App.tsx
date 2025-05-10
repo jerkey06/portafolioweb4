@@ -5,6 +5,7 @@ import { Hero } from './components/sections/Hero';
 import { Projects } from './components/sections/Projects';
 import { Blog } from './components/sections/Blog';
 import { About } from './components/sections/About';
+import { GameOfLife } from './components/ui/GameOfLife';
 
 function App() {
   const projectsRef = useRef<HTMLDivElement>(null);
@@ -28,7 +29,8 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen transition-colors duration-300 dark:bg-zinc-900 bg-zinc-50 dark:text-white text-zinc-900">
+      <div className="min-h-screen transition-colors duration-300 dark:bg-zinc-900/90 bg-zinc-50/90 dark:text-white text-zinc-900">
+        <GameOfLife />
         <Header onNavigate={scrollToSection} />
         <Hero onNavigate={scrollToSection} />
         <div ref={projectsRef}>
