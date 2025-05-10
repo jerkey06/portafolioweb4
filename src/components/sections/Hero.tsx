@@ -34,13 +34,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-col md:flex-row flex-wrap gap-4 items-center md:items-start"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 items-center md:items-start"
             >
               <motion.button 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate('projects')}
-                className="neobrutalist-button bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 px-6 py-3"
+                className="w-full sm:w-auto neobrutalist-button bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 px-6 py-3"
               >
                 View Projects
               </motion.button>
@@ -48,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onNavigate('contact')}
-                className="neobrutalist-button bg-zinc-800 dark:bg-zinc-200 text-white dark:text-zinc-900 px-6 py-3"
+                className="w-full sm:w-auto neobrutalist-button bg-zinc-800 dark:bg-zinc-200 text-white dark:text-zinc-900 px-6 py-3"
               >
                 Contact Me
               </motion.button>
@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 whileTap={{ scale: 0.95 }}
                 href="/public/cv/rwservlet.pdf" 
                 download
-                className="neobrutalist-button bg-zinc-700 dark:bg-zinc-300 text-white dark:text-zinc-900 px-6 py-3 flex items-center space-x-2"
+                className="w-full sm:w-auto neobrutalist-button bg-zinc-700 dark:bg-zinc-300 text-white dark:text-zinc-900 px-6 py-3 flex items-center justify-center space-x-2"
               >
                 <Download size={20} />
                 <span>Download CV</span>
@@ -68,7 +68,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="flex-1 flex justify-center mt-10 md:mt-0"
+            className="flex-1 hidden md:flex justify-center mt-10 md:mt-0"
           >
             <Terminal size={200} className="transform -rotate-6" />
           </motion.div>

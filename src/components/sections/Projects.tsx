@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { ProjectCard } from '../ui/ProjectCard';
 import { projects } from '../../data/projects';
+import { Filter } from 'lucide-react';
 
 export const Projects: React.FC<{ id: string }> = ({ id }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -10,6 +11,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
   const [selectedLevel, setSelectedLevel] = useState('All Levels');
   const [selectedYear, setSelectedYear] = useState('Any Year');
   const [selectedLanguage, setSelectedLanguage] = useState('All Languages');
+  const [showFilters, setShowFilters] = useState(false);
 
   const filteredProjects = projects.filter(project => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -30,16 +32,25 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
 
         {/* Filters */}
         <div className="space-y-4 mb-8">
-          <input
-            type="text"
-            placeholder="Search projects..."
-            className="w-full border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <div className="flex flex-wrap gap-4">
+          <div className="flex gap-4">
+            <input
+              type="text"
+              placeholder="Search projects..."
+              className="flex-1 border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className="md:hidden border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2"
+            >
+              <Filter size={20} />
+            </button>
+          </div>
+          
+          <div className={`md:flex md:flex-wrap gap-4 ${showFilters ? 'block' : 'hidden md:flex'}`}>
             <select
-              className="border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
+              className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0"
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
             >
@@ -52,7 +63,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
               <option>IoT Integrations</option>
             </select>
             <select
-              className="border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
+              className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0"
               value={selectedLevel}
               onChange={(e) => setSelectedLevel(e.target.value)}
             >
@@ -62,7 +73,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
               <option>Advanced</option>
             </select>
             <select
-              className="border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
+              className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0"
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
             >
@@ -71,7 +82,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
               <option>2022</option>
             </select>
             <select
-              className="border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
+              className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
             >
@@ -93,7 +104,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
           className="w-full"
         >
           {filteredProjects.map(project => (
-            <SwiperSlide key={project.id} style={{ width: '400px' }}>
+            <SwiperSlide key={project.id} style={{ width: '300px', maxWidth: '100%' }}>
               <ProjectCard project={project} />
             </SwiperSlide>
           ))}
