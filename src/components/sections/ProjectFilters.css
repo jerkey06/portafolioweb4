@@ -1,0 +1,30 @@
+.custom-select {
+  font-family: 'Space Mono', monospace;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 0 currentColor;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.custom-select:focus {
+  box-shadow: 6px 6px 0 0 currentColor;
+  border-color: #3b82f6;
+}
+
+.custom-option {
+  background-color: #18181b;
+  color: #fff;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  border-bottom: 1px solid #27272a;
+  padding: 0.5rem 1rem;
+}
+
+.dark .custom-option {
+  background-color: #18181b;
+  color: #fff;
+}
+
+.light .custom-option {
+  background-color: #fff;
+  color: #18181b;
+}

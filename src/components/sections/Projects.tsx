@@ -4,6 +4,8 @@ import 'swiper/css';
 import { ProjectCard } from '../ui/ProjectCard';
 import { projects } from '../../data/projects';
 import { Filter } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import './ProjectFilters.css';
 
 export const Projects: React.FC<{ id: string }> = ({ id }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -31,71 +33,95 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
         </p>
 
         {/* Filters */}
-        <div className="space-y-4 mb-8">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="space-y-4 mb-8"
+        >
           <div className="flex gap-4">
-            <input
+            <motion.input
               type="text"
               placeholder="Search projects..."
-              className="flex-1 border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
+              className="flex-1 border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white neobrutalist-border neobrutalist-shadow transition-all"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
             />
-            <button
+            <motion.button
               onClick={() => setShowFilters(!showFilters)}
-              className="md:hidden border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2"
+              className="md:hidden border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 neobrutalist-border neobrutalist-shadow transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <Filter size={20} />
-            </button>
+            </motion.button>
           </div>
-          
-          <div className={`md:flex md:flex-wrap gap-4 ${showFilters ? 'block' : 'hidden md:flex'}`}>
-            <select
-              className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0"
-              value={selectedType}
-              onChange={(e) => setSelectedType(e.target.value)}
-            >
-              <option>All Types</option>
-              <option>Microservices</option>
-              <option>Real-time Systems</option>
-              <option>Machine Learning</option>
-              <option>E-commerce</option>
-              <option>RESTful APIs</option>
-              <option>IoT Integrations</option>
-            </select>
-            <select
-              className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0"
-              value={selectedLevel}
-              onChange={(e) => setSelectedLevel(e.target.value)}
-            >
-              <option>All Levels</option>
-              <option>Beginner</option>
-              <option>Intermediate</option>
-              <option>Advanced</option>
-            </select>
-            <select
-              className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0"
-              value={selectedYear}
-              onChange={(e) => setSelectedYear(e.target.value)}
-            >
-              <option>Any Year</option>
-              <option>2023</option>
-              <option>2022</option>
-            </select>
-            <select
-              className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white"
-              value={selectedLanguage}
-              onChange={(e) => setSelectedLanguage(e.target.value)}
-            >
-              <option>All Languages</option>
-              <option>JavaScript</option>
-              <option>TypeScript</option>
-              <option>Python</option>
-              <option>C#</option>
-              <option>PHP</option>
-              <option>Rust</option>
-            </select>
-          </div>
-        </div>
+          <AnimatePresence>
+            {(showFilters || window.innerWidth >= 768) && (
+              <motion.div
+                key="filters"
+                initial={{ opacity: 0, y: -10, height: 0 }}
+                animate={{ opacity: 1, y: 0, height: 'auto' }}
+                exit={{ opacity: 0, y: -10, height: 0 }}
+                transition={{ duration: 0.4, height: { duration: 0.5 } }}
+                className={`md:flex md:flex-wrap gap-4 ${showFilters ? 'block' : 'hidden md:flex'}`}
+              >
+                <motion.select
+                  className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0 neobrutalist-border neobrutalist-shadow transition-all custom-select"
+                  value={selectedType}
+                  onChange={(e) => setSelectedType(e.target.value)}
+                  whileFocus={{ scale: 1.03 }}
+                >
+                  <option className="custom-option">All Types</option>
+                  <option className="custom-option">Microservices</option>
+                  <option className="custom-option">Real-time Systems</option>
+                  <option className="custom-option">Machine Learning</option>
+                  <option className="custom-option">E-commerce</option>
+                  <option className="custom-option">RESTful APIs</option>
+                  <option className="custom-option">IoT Integrations</option>
+                </motion.select>
+                <motion.select
+                  className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0 neobrutalist-border neobrutalist-shadow transition-all custom-select"
+                  value={selectedLevel}
+                  onChange={(e) => setSelectedLevel(e.target.value)}
+                  whileFocus={{ scale: 1.03 }}
+                >
+                  <option className="custom-option">All Levels</option>
+                  <option className="custom-option">Beginner</option>
+                  <option className="custom-option">Intermediate</option>
+                  <option className="custom-option">Advanced</option>
+                </motion.select>
+                <motion.select
+                  className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0 neobrutalist-border neobrutalist-shadow transition-all custom-select"
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                  whileFocus={{ scale: 1.03 }}
+                >
+                  <option className="custom-option">Any Year</option>
+                  <option className="custom-option">2023</option>
+                  <option className="custom-option">2022</option>
+                </motion.select>
+                <motion.select
+                  className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white neobrutalist-border neobrutalist-shadow transition-all custom-select"
+                  value={selectedLanguage}
+                  onChange={(e) => setSelectedLanguage(e.target.value)}
+                  whileFocus={{ scale: 1.03 }}
+                >
+                  <option className="custom-option">All Languages</option>
+                  <option className="custom-option">JavaScript</option>
+                  <option className="custom-option">TypeScript</option>
+                  <option className="custom-option">Python</option>
+                  <option className="custom-option">C#</option>
+                  <option className="custom-option">PHP</option>
+                  <option className="custom-option">Rust</option>
+                </motion.select>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Projects Slider */}
         <Swiper

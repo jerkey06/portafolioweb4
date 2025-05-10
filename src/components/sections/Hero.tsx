@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, Download } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface HeroProps {
@@ -10,7 +10,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   return (
     <div className="pt-24 min-h-screen flex items-center">
       <div className="max-w-7xl mx-auto px-4 py-20">
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="flex flex-col md:flex-row items-center md:justify-end">
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -63,14 +63,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 <span>Download CV</span>
               </motion.a>
             </motion.div>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex-1 hidden md:flex justify-center mt-10 md:mt-0"
-          >
-            <Terminal size={200} className="transform -rotate-6" />
           </motion.div>
         </div>
       </div>
