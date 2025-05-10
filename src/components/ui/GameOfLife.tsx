@@ -128,7 +128,7 @@ export const GameOfLife: React.FC = () => {
     };
 
     window.addEventListener('resize', handleResize);
-    const intervalId = setInterval(updateGrid, 200);
+    const intervalId = setInterval(updateGrid, 500);
 
     return () => {
       window.removeEventListener('resize', handleResize);
