@@ -25,8 +25,6 @@ export const GameOfLife: React.FC = () => {
     let height = window.innerHeight;
     let cols = Math.floor(width / CELL_SIZE);
     let rows = Math.floor(height / CELL_SIZE);
-    let mouseX = -1;
-    let mouseY = -1;
     
     canvas.width = width;
     canvas.height = height;
@@ -35,6 +33,37 @@ export const GameOfLife: React.FC = () => {
     let grid = Array(cols).fill(null).map(() => 
       Array(rows).fill(null).map(() => Math.random() > 0.85)
     );
+
+    const drawGrid = () => {
+      ctx.clearRect(0, 0, width, height);
+      // Draw cells
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          if (grid[i][j]) {
+            ctx.fillStyle = cellColor;
+            ctx.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE - 1, CELL_SIZE - 1);
+          }
+        }
+      }
+      // Draw grid lines
+      ctx.strokeStyle = gridColor;
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= cols; i++) {
+        ctx.beginPath();
+        ctx.moveTo(i * CELL_SIZE, 0);
+        ctx.lineTo(i * CELL_SIZE, height);
+        ctx.stroke();
+      }
+      for (let j = 0; j <= rows; j++) {
+        ctx.beginPath();
+        ctx.moveTo(0, j * CELL_SIZE);
+        ctx.lineTo(width, j * CELL_SIZE);
+        ctx.stroke();
+      }
+    };
+
+    // Dibuja el estado inicial del grid al cargar la página
+    drawGrid();
 
     const countNeighbors = (grid: boolean[][], x: number, y: number) => {
       let sum = 0;
@@ -49,64 +78,31 @@ export const GameOfLife: React.FC = () => {
       return sum;
     };
 
-    const createLifeAroundMouse = () => {
-      if (mouseX === -1 || mouseY === -1) return;
-      
-      const gridX = Math.floor(mouseX / CELL_SIZE);
-      const gridY = Math.floor(mouseY / CELL_SIZE);
-      
-      // Create a pattern around the mouse
-      for (let i = -2; i <= 2; i++) {
-        for (let j = -2; j <= 2; j++) {
-          const x = (gridX + i + cols) % cols;
-          const y = (gridY + j + rows) % rows;
-          if (Math.random() > 0.5) {
-            grid[x][y] = true;
-          }
-        }
-      }
-    };
-
-    const drawGrid = () => {
-      ctx.clearRect(0, 0, width, height);
-      
-      // Draw cells
-      for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-          if (grid[i][j]) {
-            ctx.fillStyle = cellColor;
-            ctx.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE - 1, CELL_SIZE - 1);
-          }
-        }
-      }
-
-      // Draw grid lines
-      ctx.strokeStyle = gridColor;
-      ctx.lineWidth = 1;
-
-      for (let i = 0; i <= cols; i++) {
-        ctx.beginPath();
-        ctx.moveTo(i * CELL_SIZE, 0);
-        ctx.lineTo(i * CELL_SIZE, height);
-        ctx.stroke();
-      }
-
-      for (let j = 0; j <= rows; j++) {
-        ctx.beginPath();
-        ctx.moveTo(0, j * CELL_SIZE);
-        ctx.lineTo(width, j * CELL_SIZE);
-        ctx.stroke();
+    // Elimina integración con mouse y aparición local
+    // Añade aparición aleatoria de fragmentos en todo el fondo
+    const randomizeFragments = () => {
+      // Cada ciclo, con baja probabilidad, activa fragmentos aleatorios
+      for (let n = 0; n < 5; n++) { // 5 fragmentos por ciclo
+        const centerX = Math.floor(Math.random() * cols);
+        const centerY = Math.floor(Math.random() * rows);
+        // Pequeño patrón tipo "glider"
+        const pattern = [
+          [0,0], [1,0], [2,0], [2,1], [1,2]
+        ];
+        pattern.forEach(([dx, dy]) => {
+          const x = (centerX + dx) % cols;
+          const y = (centerY + dy) % rows;
+          grid[x][y] = true;
+        });
       }
     };
 
     const updateGrid = () => {
-      createLifeAroundMouse();
+      randomizeFragments();
       let next = grid.map(arr => [...arr]);
-
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
           let neighbors = countNeighbors(grid, i, j);
-          
           if (!grid[i][j] && neighbors === 3) {
             next[i][j] = true;
           } else if (grid[i][j] && (neighbors < 2 || neighbors > 3)) {
@@ -114,7 +110,6 @@ export const GameOfLife: React.FC = () => {
           }
         }
       }
-
       grid = next;
       drawGrid();
     };
@@ -126,31 +121,16 @@ export const GameOfLife: React.FC = () => {
       rows = Math.floor(height / CELL_SIZE);
       canvas.width = width;
       canvas.height = height;
-      
       grid = Array(cols).fill(null).map(() => 
         Array(rows).fill(null).map(() => Math.random() > 0.85)
       );
+      drawGrid();
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-    };
-
-    const handleMouseLeave = () => {
-      mouseX = -1;
-      mouseY = -1;
-    };
-
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mouseleave', handleMouseLeave);
     window.addEventListener('resize', handleResize);
     const intervalId = setInterval(updateGrid, 200);
 
     return () => {
-      canvas.removeEventListener('mousemove', handleMouseMove);
-      canvas.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('resize', handleResize);
       clearInterval(intervalId);
     };
@@ -159,7 +139,7 @@ export const GameOfLife: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 opacity-30"
+      className="fixed top-0 left-0 w-full h-full z-0 opacity-30"
     />
   );
 };
