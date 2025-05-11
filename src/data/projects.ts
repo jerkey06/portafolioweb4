@@ -17,7 +17,7 @@ export const projects: Project[] = [
     year: 2025,
     type: 'Machine Learning',
     level: 'Intermediate',
-    image: '',
+    image: 'public/videoProcessor.png',
     githubUrl: 'https://github.com/jerkey06/video-processor',
   },
   {
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     year: 2024,
     type: 'Web Application',
     level: 'Intermediate',
-    image: '',
+    image: 'public/image2.png',
     githubUrl: 'https://github.com/jerkey06/weather-time',
     projectUrl: 'https://weather-time-mauve.vercel.app/'
   },
