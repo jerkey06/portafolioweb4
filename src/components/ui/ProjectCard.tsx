@@ -64,7 +64,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               href={project.githubUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="neobrutalist-button bg-secondary-DEFAULT text-white px-4 py-3"
+              className="neobrutalist-button bg-white text-black dark:bg-zinc-700 dark:text-zinc-100 px-4 py-3 border-zinc-900 dark:border-zinc-100 shadow-neobrutalist hover:bg-zinc-100 hover:text-black focus:outline-none focus:ring-2 focus:ring-zinc-700"
             >
               View Code
             </motion.a>
@@ -76,7 +76,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               href={project.projectUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="neobrutalist-button bg-primary-DEFAULT text-white px-4 py-3"
+              className="neobrutalist-button bg-white text-black dark:bg-zinc-700 dark:text-zinc-100 px-4 py-3 border-zinc-900 dark:border-zinc-100 shadow-neobrutalist hover:bg-zinc-100 hover:text-black focus:outline-none focus:ring-2 focus:ring-zinc-700"
             >
               Live Demo
             </motion.a>
