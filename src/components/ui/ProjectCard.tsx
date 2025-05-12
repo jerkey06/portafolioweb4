@@ -18,17 +18,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         stiffness: 400,
         damping: 10
       }
-    },
-    float: {
-      y: [-5, 5],
-      transition: {
-        y: {
-          duration: 2,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "easeInOut"
-        }
-      }
     }
   };
 
@@ -47,13 +36,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       animate={{ opacity: 1, y: 0 }}
       whileHover="hover"
       variants={cardVariants}
-      onHoverStart={() => {
-        controls.start("hover");
-      }}
-      onHoverEnd={() => {
-        controls.start("float");
-      }}
-      className="max-w-sm border-4 border-current shadow-neobrutalist bg-white dark:bg-zinc-800 overflow-hidden"
+      className="max-w-sm border-4 border-current shadow-neobrutalist bg-white dark:bg-zinc-800 overflow-visible"
+      style={{ marginBottom: '20px' }}
     >
       <motion.div variants={imageVariants}>
         <img 

@@ -126,8 +126,8 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
         {/* Projects Slider */}
         <Swiper
           slidesPerView="auto"
-          spaceBetween={24}
-          className="w-full"
+          spaceBetween={32}
+          className="!overflow-visible !pb-12"
         >
           {filteredProjects.map(project => (
             <SwiperSlide key={project.id} style={{ width: '300px', maxWidth: '100%' }}>
