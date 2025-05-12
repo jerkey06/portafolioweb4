@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { Mail, Github, Linkedin, MapPin, Calendar } from 'lucide-react';
 import { ExperienceCard } from '../ui/ExperienceCard';
 import { experiences } from '../../data/experiences';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useAnimation, useInView } from 'framer-motion';
 
 interface AboutProps {
   id: string;
