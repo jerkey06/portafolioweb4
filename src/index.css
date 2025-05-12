@@ -18,6 +18,31 @@ body {
   @apply neobrutalist-border neobrutalist-shadow transform active:translate-x-1 active:translate-y-1 active:shadow-none transition-all;
 }
 
+/* Add floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Add hover effect for project cards */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 6px 6px 0 0 currentColor;
+}
+
+/* Theme specific styles */
 .dark {
   @apply bg-zinc-900 text-zinc-100;
 }
@@ -120,4 +145,37 @@ body {
 
 .light .react-activity-calendar__day {
   @apply border-zinc-900;
+}
+
+/* Add hover animations */
+.hover-lift {
+  transition: transform 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* Add floating animation for cards */
+.floating-card {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Add glow effect for dark mode */
+.dark .glow-hover:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Add smooth transitions */
+.smooth-transition {
+  transition: all 0.3s ease;
 }
