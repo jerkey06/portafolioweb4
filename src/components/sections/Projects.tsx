@@ -69,55 +69,51 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
                 transition={{ duration: 0.4, height: { duration: 0.5 } }}
                 className={`md:flex md:flex-wrap gap-4 ${showFilters ? 'block' : 'hidden md:flex'}`}
               >
-                <motion.select
-                  className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0 neobrutalist-border neobrutalist-shadow transition-all custom-select"
+                <select
+                  className="w-full md:w-auto custom-select bg-white dark:bg-zinc-800 px-4 py-2 text-zinc-900 dark:text-white"
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
-                  whileFocus={{ scale: 1.03 }}
                 >
-                  <option className="custom-option">All Types</option>
-                  <option className="custom-option">Microservices</option>
-                  <option className="custom-option">Real-time Systems</option>
-                  <option className="custom-option">Machine Learning</option>
-                  <option className="custom-option">E-commerce</option>
-                  <option className="custom-option">RESTful APIs</option>
-                  <option className="custom-option">IoT Integrations</option>
-                </motion.select>
-                <motion.select
-                  className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0 neobrutalist-border neobrutalist-shadow transition-all custom-select"
+                  <option>All Types</option>
+                  <option>Microservices</option>
+                  <option>Real-time Systems</option>
+                  <option>Machine Learning</option>
+                  <option>E-commerce</option>
+                  <option>RESTful APIs</option>
+                  <option>IoT Integrations</option>
+                </select>
+                <select
+                  className="w-full md:w-auto custom-select bg-white dark:bg-zinc-800 px-4 py-2 text-zinc-900 dark:text-white"
                   value={selectedLevel}
                   onChange={(e) => setSelectedLevel(e.target.value)}
-                  whileFocus={{ scale: 1.03 }}
                 >
-                  <option className="custom-option">All Levels</option>
-                  <option className="custom-option">Beginner</option>
-                  <option className="custom-option">Intermediate</option>
-                  <option className="custom-option">Advanced</option>
-                </motion.select>
-                <motion.select
-                  className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white mb-2 md:mb-0 neobrutalist-border neobrutalist-shadow transition-all custom-select"
+                  <option>All Levels</option>
+                  <option>Beginner</option>
+                  <option>Intermediate</option>
+                  <option>Advanced</option>
+                </select>
+                <select
+                  className="w-full md:w-auto custom-select bg-white dark:bg-zinc-800 px-4 py-2 text-zinc-900 dark:text-white"
                   value={selectedYear}
                   onChange={(e) => setSelectedYear(e.target.value)}
-                  whileFocus={{ scale: 1.03 }}
                 >
-                  <option className="custom-option">Any Year</option>
-                  <option className="custom-option">2023</option>
-                  <option className="custom-option">2022</option>
-                </motion.select>
-                <motion.select
-                  className="w-full md:w-auto border-4 border-current bg-white dark:bg-zinc-800 px-4 py-2 focus:outline-none text-zinc-900 dark:text-white neobrutalist-border neobrutalist-shadow transition-all custom-select"
+                  <option>Any Year</option>
+                  <option>2023</option>
+                  <option>2022</option>
+                </select>
+                <select
+                  className="w-full md:w-auto custom-select bg-white dark:bg-zinc-800 px-4 py-2 text-zinc-900 dark:text-white"
                   value={selectedLanguage}
                   onChange={(e) => setSelectedLanguage(e.target.value)}
-                  whileFocus={{ scale: 1.03 }}
                 >
-                  <option className="custom-option">All Languages</option>
-                  <option className="custom-option">JavaScript</option>
-                  <option className="custom-option">TypeScript</option>
-                  <option className="custom-option">Python</option>
-                  <option className="custom-option">C#</option>
-                  <option className="custom-option">PHP</option>
-                  <option className="custom-option">Rust</option>
-                </motion.select>
+                  <option>All Languages</option>
+                  <option>JavaScript</option>
+                  <option>TypeScript</option>
+                  <option>Python</option>
+                  <option>C#</option>
+                  <option>PHP</option>
+                  <option>Rust</option>
+                </select>
               </motion.div>
             )}
           </AnimatePresence>

@@ -3,28 +3,40 @@
   border-radius: 0;
   box-shadow: 4px 4px 0 0 currentColor;
   transition: box-shadow 0.2s, border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  padding-right: 36px;
 }
 
 .custom-select:focus {
   box-shadow: 6px 6px 0 0 currentColor;
-  border-color: #3b82f6;
+  border-color: currentColor;
+  outline: none;
 }
 
-.custom-option {
-  background-color: #18181b;
-  color: #fff;
+.custom-select option {
   font-family: 'Space Mono', monospace;
   font-size: 1rem;
-  border-bottom: 1px solid #27272a;
   padding: 0.5rem 1rem;
+  border-bottom: 4px solid currentColor;
+  background-color: var(--option-bg);
+  color: var(--option-color);
 }
 
-.dark .custom-option {
-  background-color: #18181b;
-  color: #fff;
+.dark {
+  --option-bg: #18181b;
+  --option-color: #ffffff;
 }
 
-.light .custom-option {
-  background-color: #fff;
-  color: #18181b;
+.light {
+  --option-bg: #ffffff;
+  --option-color: #18181b;
+}
+
+.custom-select::-ms-expand {
+  display: none;
 }
