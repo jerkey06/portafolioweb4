@@ -21,15 +21,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     }
   };
 
-  const imageVariants = {
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -39,13 +30,13 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       className="max-w-sm border-4 border-current shadow-neobrutalist bg-white dark:bg-zinc-800 overflow-visible"
       style={{ marginBottom: '20px' }}
     >
-      <motion.div variants={imageVariants}>
+      <div className="overflow-hidden">
         <img 
           src={project.image} 
           alt={project.title}
           className="w-full h-48 object-cover border-b-4 border-current"
         />
-      </motion.div>
+      </div>
       <div className="p-6">
         <motion.h3 
           className="text-2xl font-bold mb-4"
