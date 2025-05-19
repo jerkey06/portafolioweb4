@@ -6,6 +6,7 @@ const GRID_COLOR_LIGHT = 'rgba(0, 0, 0, 0.1)';
 const CELL_COLOR_LIGHT = 'rgba(0, 0, 0, 0.2)';
 const GRID_COLOR_DARK = 'rgba(255, 255, 255, 0.1)';
 const CELL_COLOR_DARK = 'rgba(255, 255, 255, 0.2)';
+const UPDATE_INTERVAL = 200; // Reduced from 500ms to 200ms for faster animation
 
 export const GameOfLife: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -15,7 +16,7 @@ export const GameOfLife: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false }); // Optimize for non-transparent canvas
     if (!ctx) return;
 
     const gridColor = isDark ? GRID_COLOR_DARK : GRID_COLOR_LIGHT;
@@ -29,41 +30,41 @@ export const GameOfLife: React.FC = () => {
     canvas.width = width;
     canvas.height = height;
 
-    // Initialize grid
+    // Initialize grid with slightly more active cells
     let grid = Array(cols).fill(null).map(() => 
-      Array(rows).fill(null).map(() => Math.random() > 0.85)
+      Array(rows).fill(null).map(() => Math.random() > 0.80) // Increased probability of active cells
     );
 
     const drawGrid = () => {
-      ctx.clearRect(0, 0, width, height);
-      // Draw cells
+      ctx.fillStyle = isDark ? '#18181B' : '#fafafa';
+      ctx.fillRect(0, 0, width, height);
+      
+      // Draw cells first
+      ctx.fillStyle = cellColor;
       for (let i = 0; i < cols; i++) {
         for (let j = 0; j < rows; j++) {
           if (grid[i][j]) {
-            ctx.fillStyle = cellColor;
             ctx.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE - 1, CELL_SIZE - 1);
           }
         }
       }
+      
       // Draw grid lines
       ctx.strokeStyle = gridColor;
       ctx.lineWidth = 1;
+      
+      // Batch grid line drawing
+      ctx.beginPath();
       for (let i = 0; i <= cols; i++) {
-        ctx.beginPath();
         ctx.moveTo(i * CELL_SIZE, 0);
         ctx.lineTo(i * CELL_SIZE, height);
-        ctx.stroke();
       }
       for (let j = 0; j <= rows; j++) {
-        ctx.beginPath();
         ctx.moveTo(0, j * CELL_SIZE);
         ctx.lineTo(width, j * CELL_SIZE);
-        ctx.stroke();
       }
+      ctx.stroke();
     };
-
-    // Dibuja el estado inicial del grid al cargar la página
-    drawGrid();
 
     const countNeighbors = (grid: boolean[][], x: number, y: number) => {
       let sum = 0;
@@ -78,14 +79,11 @@ export const GameOfLife: React.FC = () => {
       return sum;
     };
 
-    // Elimina integración con mouse y aparición local
-    // Añade aparición aleatoria de fragmentos en todo el fondo
     const randomizeFragments = () => {
-      // Cada ciclo, con baja probabilidad, activa fragmentos aleatorios
-      for (let n = 0; n < 5; n++) { // 5 fragmentos por ciclo
+      // Create more fragments per cycle for increased activity
+      for (let n = 0; n < 8; n++) { // Increased from 5 to 8 fragments
         const centerX = Math.floor(Math.random() * cols);
         const centerY = Math.floor(Math.random() * rows);
-        // Pequeño patrón tipo "glider"
         const pattern = [
           [0,0], [1,0], [2,0], [2,1], [1,2]
         ];
@@ -122,13 +120,13 @@ export const GameOfLife: React.FC = () => {
       canvas.width = width;
       canvas.height = height;
       grid = Array(cols).fill(null).map(() => 
-        Array(rows).fill(null).map(() => Math.random() > 0.85)
+        Array(rows).fill(null).map(() => Math.random() > 0.80)
       );
       drawGrid();
     };
 
     window.addEventListener('resize', handleResize);
-    const intervalId = setInterval(updateGrid, 500);
+    const intervalId = setInterval(updateGrid, UPDATE_INTERVAL);
 
     return () => {
       window.removeEventListener('resize', handleResize);
