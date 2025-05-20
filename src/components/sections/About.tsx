@@ -1,8 +1,7 @@
 import React from 'react';
-import { Mail, Github, Linkedin, MapPin, Calendar } from 'lucide-react';
-import { ExperienceCard } from '../ui/ExperienceCard';
+import { Mail, Github, Linkedin, MapPin, Calendar, ChevronDown, ChevronUp } from 'lucide-react';
 import { experiences } from '../../data/experiences';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface AboutProps {
   id: string;
@@ -10,6 +9,12 @@ interface AboutProps {
 }
 
 export const About: React.FC<AboutProps> = ({ id, contactRef }) => {
+  const [expandedId, setExpandedId] = React.useState<number | null>(null);
+
+  const toggleExpanded = (id: number) => {
+    setExpandedId(expandedId === id ? null : id);
+  };
+
   return (
     <div id={id} className="py-20">
       <div className="max-w-7xl mx-auto px-4">
@@ -18,34 +23,92 @@ export const About: React.FC<AboutProps> = ({ id, contactRef }) => {
           <h2 className="text-4xl font-bold mb-12">Experience Timeline</h2>
           <div className="relative">
             {/* Vertical Line */}
-            <div className="absolute left-0 md:left-1/2 h-full w-1 bg-current transform -translate-x-1/2"></div>
+            <div className="absolute left-4 md:left-1/2 h-full w-1 bg-current transform md:-translate-x-1/2"></div>
             
             {experiences.map((exp, index) => (
               <motion.div 
                 key={exp.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className={`relative flex items-center mb-12 ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'
-                }`}
+                className="relative flex flex-col md:flex-row items-start mb-12 md:even:flex-row-reverse"
               >
                 {/* Timeline Point */}
-                <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-current rounded-full transform -translate-x-1/2"></div>
+                <motion.div 
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: index * 0.2 + 0.5 }}
+                  className="absolute left-4 md:left-1/2 w-4 h-4 bg-current rounded-full transform md:-translate-x-1/2 mt-8"
+                />
                 
                 {/* Content */}
-                <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
-                  <div className="border-4 border-current shadow-neobrutalist p-6 bg-white dark:bg-zinc-800">
-                    <h3 className="text-xl font-bold">{exp.title}</h3>
-                    <p className="text-sm mb-2">{exp.company} | {exp.period}</p>
-                    <p className="mb-4">{exp.summary}</p>
-                    <ul className="list-disc list-inside space-y-2">
-                      {exp.details.map((detail, idx) => (
-                        <li key={idx}>{detail}</li>
-                      ))}
-                    </ul>
-                  </div>
+                <div className={`ml-12 md:ml-0 w-full md:w-5/12 ${
+                  index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
+                }`}>
+                  <motion.div 
+                    className="border-4 border-current shadow-neobrutalist p-6 bg-white dark:bg-zinc-800"
+                    whileHover={{ y: -5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div 
+                      className="cursor-pointer"
+                      onClick={() => toggleExpanded(exp.id)}
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="text-xl font-bold">{exp.title}</h3>
+                        <motion.div
+                          animate={{ rotate: expandedId === exp.id ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {expandedId === exp.id ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                        </motion.div>
+                      </div>
+                      <p className="text-sm mb-2">{exp.company} | {exp.period}</p>
+                      <p className="mb-4">{exp.summary}</p>
+                    </div>
+
+                    <AnimatePresence>
+                      {expandedId === exp.id && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="border-t-4 border-current pt-4 mt-4">
+                            <h4 className="font-bold mb-2">Responsibilities:</h4>
+                            <ul className="list-disc list-inside space-y-2 mb-4">
+                              {exp.details.map((detail, idx) => (
+                                <motion.li 
+                                  key={idx}
+                                  initial={{ opacity: 0, x: -20 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: idx * 0.1 }}
+                                >
+                                  {detail}
+                                </motion.li>
+                              ))}
+                            </ul>
+                            <h4 className="font-bold mb-2">Technologies:</h4>
+                            <div className="flex flex-wrap gap-2">
+                              {exp.technologies.map((tech, idx) => (
+                                <motion.span
+                                  key={idx}
+                                  initial={{ opacity: 0, scale: 0.8 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  transition={{ delay: idx * 0.1 }}
+                                  className="project-tag neobrutalist-border px-3 py-1"
+                                >
+                                  {tech}
+                                </motion.span>
+                              ))}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
                 </div>
               </motion.div>
             ))}

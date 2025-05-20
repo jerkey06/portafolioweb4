@@ -20,6 +20,7 @@ export interface Experience {
     period: string;
     summary: string;
     details: string[];
+    technologies: string[];
 }
   
 export interface BlogPost {
