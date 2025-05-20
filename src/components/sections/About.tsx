@@ -15,6 +15,40 @@ export const About: React.FC<AboutProps> = ({ id, contactRef }) => {
     setExpandedId(expandedId === id ? null : id);
   };
 
+  const contactVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.3,
+        ease: "easeOut"
+      }
+    })
+  };
+
+  const iconVariants = {
+    hover: {
+      scale: 1.2,
+      rotate: 5,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const linkVariants = {
+    hover: {
+      x: 10,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut"
+      }
+    }
+  };
+
   return (
     <div id={id} className="py-20">
       <div className="max-w-7xl mx-auto px-4">
@@ -128,48 +162,93 @@ export const About: React.FC<AboutProps> = ({ id, contactRef }) => {
           </div>
 
           <div ref={contactRef} className="space-y-6">
-            <div className="border-4 border-current shadow-neobrutalist p-6 bg-white dark:bg-zinc-800">
-              <h3 className="text-xl font-bold mb-4">Contact Information</h3>
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="border-4 border-current shadow-neobrutalist p-6 bg-white dark:bg-zinc-800"
+            >
+              <motion.h3 
+                variants={contactVariants}
+                custom={0}
+                className="text-xl font-bold mb-4"
+              >
+                Contact Information
+              </motion.h3>
               <div className="space-y-4">
-                <a 
+                <motion.a 
                   href="mailto:contactojkemi@gmail.com"
-                  className="flex items-center space-x-3 hover:underline decoration-4 underline-offset-4"
+                  variants={contactVariants}
+                  custom={1}
+                  whileHover="hover"
+                  className="flex items-center space-x-3 hover:underline decoration-4 underline-offset-4 group"
                 >
-                  <Mail size={20} />
-                  <span>contacto@gmail.com</span>
-                </a>
-                <a 
+                  <motion.div variants={iconVariants}>
+                    <Mail size={20} className="group-hover:text-primary-light transition-colors duration-300" />
+                  </motion.div>
+                  <motion.span variants={linkVariants}>contacto@gmail.com</motion.span>
+                </motion.a>
+                <motion.a 
                   href="github.com/jerkey06"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 hover:underline decoration-4 underline-offset-4"
+                  variants={contactVariants}
+                  custom={2}
+                  whileHover="hover"
+                  className="flex items-center space-x-3 hover:underline decoration-4 underline-offset-4 group"
                 >
-                  <Github size={20} />
-                  <span>@jerkey06</span>
-                </a>
-                <a 
+                  <motion.div variants={iconVariants}>
+                    <Github size={20} className="group-hover:text-primary-light transition-colors duration-300" />
+                  </motion.div>
+                  <motion.span variants={linkVariants}>@jerkey06</motion.span>
+                </motion.a>
+                <motion.a 
                   href="https://linkedin.com/in/emilianoponceg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-3 hover:underline decoration-4 underline-offset-4"
+                  variants={contactVariants}
+                  custom={3}
+                  whileHover="hover"
+                  className="flex items-center space-x-3 hover:underline decoration-4 underline-offset-4 group"
                 >
-                  <Linkedin size={20} />
-                  <span>Emiliano Ponce</span>
-                </a>
-                <div className="flex items-center space-x-3">
-                  <MapPin size={20} />
+                  <motion.div variants={iconVariants}>
+                    <Linkedin size={20} className="group-hover:text-primary-light transition-colors duration-300" />
+                  </motion.div>
+                  <motion.span variants={linkVariants}>Emiliano Ponce</motion.span>
+                </motion.a>
+                <motion.div 
+                  variants={contactVariants}
+                  custom={4}
+                  className="flex items-center space-x-3"
+                >
+                  <motion.div variants={iconVariants} whileHover="hover">
+                    <MapPin size={20} />
+                  </motion.div>
                   <span>Leon, Gto</span>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="border-4 border-current shadow-neobrutalist p-6 bg-white dark:bg-zinc-800">
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={contactVariants}
+              custom={5}
+              className="border-4 border-current shadow-neobrutalist p-6 bg-white dark:bg-zinc-800"
+            >
               <h3 className="text-xl font-bold mb-4">Availability</h3>
-              <div className="flex items-center space-x-3">
-                <Calendar size={20} />
+              <motion.div 
+                className="flex items-center space-x-3"
+                whileHover={{ x: 10 }}
+                transition={{ duration: 0.2 }}
+              >
+                <motion.div variants={iconVariants} whileHover="hover">
+                  <Calendar size={20} />
+                </motion.div>
                 <span className="text-green-500 font-bold">Available for Projects</span>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </div>
