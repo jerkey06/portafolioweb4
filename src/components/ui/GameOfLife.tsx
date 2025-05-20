@@ -137,7 +137,7 @@ export const GameOfLife: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full z-0 opacity-30"
+      className="fixed top-0 left-0 w-full h-full z-0 opacity-30 pointer-events-none"
     />
   );
 };
