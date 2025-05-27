@@ -120,17 +120,20 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
         </motion.div>
 
         {/* Projects Slider */}
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={32}
-          className="!overflow-visible !pb-12"
-        >
-          {filteredProjects.map(project => (
-            <SwiperSlide key={project.id} style={{ width: '300px', maxWidth: '100%' }}>
-              <ProjectCard project={project} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div className="w-full overflow-hidden">
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={32}
+            className="!overflow-visible !pb-12"
+            style={{ width: '100%' }}
+          >
+            {filteredProjects.map(project => (
+              <SwiperSlide key={project.id} style={{ width: 'auto', maxWidth: '100%', flex: '0 0 300px' }}>
+                <ProjectCard project={project} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </div>
   );
