@@ -4,6 +4,8 @@
 
 body {
   font-family: 'Space Mono', monospace;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  width: 100%;
 }
 
 .neobrutalist-shadow {
@@ -35,11 +37,30 @@ body {
 /* Add hover effect for project cards */
 .project-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 300px;
 }
 
 .project-card:hover {
   transform: translateY(-10px);
   box-shadow: 6px 6px 0 0 currentColor;
+}
+
+/* Swiper custom styles */
+.swiper {
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.swiper-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.swiper-slide {
+  width: auto !important;
+  max-width: 100%;
+  flex: 0 0 300px;
 }
 
 /* Theme specific styles */
@@ -122,11 +143,6 @@ body {
 .accordion-content.open {
   max-height: 1000px;
   transition: max-height 0.5s ease-in;
-}
-
-/* Swiper custom styles */
-.swiper-slide {
-  width: auto !important;
 }
 
 /* GitHub calendar customization */
