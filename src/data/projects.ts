@@ -3,6 +3,27 @@ import { Project } from '../types';
 export const projects: Project[] = [
   {
     id: 1,
+    title: 'Server TCP',
+    description: 'A simple TCP server in Rust that listens for incoming connections, displays received messages, and implements a basic command protocol.',
+    keyFeatures: [
+      'Listens on all network interfaces (0.0.0.0) on port 8888',
+      'Accepts multiple client connections',
+      'Displays incoming messages in UTF-8 format',
+      'Handles client disconnections gracefully',
+      'Implements a simple command protocol with responses',
+      'Built with pure Rust standard library (no external dependencies)'
+    ],
+    technologies: ['Rust', 'TCP', 'Networking'],
+    role: 'Backend Developer',
+    year: 2024,
+    type: 'Networking',
+    level: 'Beginner',
+    image: 'https://raw.githubusercontent.com/yourusername/server-tcp/main/assets/server-tcp.png',
+    githubUrl: 'https://github.com/yourusername/server-tcp',
+    projectUrl: '',
+  },
+  {
+    id: 2,
     title: 'Video Processor',
     description: 'A Python application that automatically processes video files to create concise edited versions by removing redundant content.',
     keyFeatures: [
@@ -23,7 +44,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/jerkey06/video-processor',
   },
   {
-    id: 2,
+    id: 3,
     title: 'Weather Time App',
     description: 'A modern web application that provides real-time weather information with an intuitive and attractive interface.',
     keyFeatures: [
@@ -45,7 +66,7 @@ export const projects: Project[] = [
     projectUrl: 'https://weather-time-mauve.vercel.app/'
   },
   {
-    id: 3,
+    id: 4,
     title: 'E-Commerce Platform',
     description: 'A full-featured e-commerce platform with modern design, secure payments, and comprehensive admin dashboard.',
     keyFeatures: [
@@ -66,7 +87,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/jerkey06/ecommerce-platform',
   },
   {
-    id: 4,
+    id: 5,
     title: 'TaskGestionAPI - Task Management API',
     description: 'A RESTful API built with .NET 9 for efficient CRUD operations for task management, featuring interactive API documentation via Swagger.',
     keyFeatures: [
@@ -86,7 +107,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/jerkey06/Task-Gestion-API'
   },
   {
-    id: 5,
+    id: 6,
     title: 'IoT Dashboard',
     description: 'A real-time dashboard for monitoring IoT devices with data visualization and alert systems.',
     keyFeatures: [
@@ -107,7 +128,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/jerkey06/iot-dashboard'
   },
   {
-    id: 6,
+    id: 7,
     title: 'Chat Application',
     description: 'A real-time chat application with multiple rooms, file sharing, and modern UI design.',
     keyFeatures: [
@@ -129,7 +150,7 @@ export const projects: Project[] = [
     projectUrl: 'https://chat-app-demo.vercel.app'
   },
   {
-    id: 7,
+    id: 8,
     title: 'Portfolio Website',
     description: 'A modern, responsive portfolio website showcasing projects and skills with smooth animations.',
     keyFeatures: [
@@ -150,7 +171,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/jerkey06/portfolio'
   },
   {
-    id: 8,
+    id: 9,
     title: 'Microservices Architecture',
     description: 'A scalable microservices architecture with API Gateway, service discovery, and containerization.',
     keyFeatures: [
