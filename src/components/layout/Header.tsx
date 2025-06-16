@@ -28,12 +28,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   };
 
   return (
-    <motion.nav 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: "spring", stiffness: 100 }}
-      className="fixed w-full top-0 z-50 dark:bg-zinc-900 bg-zinc-50 border-b-4 border-current"
-    >
+    <nav className="fixed w-full top-0 z-50 dark:bg-zinc-900 bg-zinc-50 border-b-4 border-current">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <motion.h1 
           className="text-xl font-bold"
@@ -124,6 +119,6 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
           <ThemeToggle />
         </div>
       </motion.div>
-    </motion.nav>
+    </nav>
   );
 };
