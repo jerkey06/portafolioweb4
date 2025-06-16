@@ -64,28 +64,26 @@ export const projects: Project[] = [
     level: 'Advanced',
     image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
     githubUrl: 'https://github.com/jerkey06/ecommerce-platform',
-    projectUrl: 'https://ecommerce-demo.vercel.app'
   },
   {
     id: 4,
-    title: 'Task Management API',
-    description: 'A RESTful API for task management with team collaboration features, built with Node.js and Express.',
+    title: 'TaskGestionAPI - Task Management API',
+    description: 'A RESTful API built with .NET 9 for efficient CRUD operations for task management, featuring interactive API documentation via Swagger.',
     keyFeatures: [
-      'CRUD operations for tasks and projects',
-      'User authentication with JWT',
-      'Team collaboration features',
-      'Real-time notifications',
-      'File upload capabilities',
-      'Advanced filtering and sorting',
-      'API documentation with Swagger'
+      'Creation of new tasks',
+      'Retrieval of all tasks',
+      'Task retrieval by ID',
+      'Updating existing tasks',
+      'Deletion of tasks',
+      'Interactive API documentation via Swagger'
     ],
-    technologies: ['Node.js', 'Express', 'MongoDB', 'JWT', 'Socket.io', 'Multer', 'Swagger'],
+    technologies: ['.NET 9', 'ASP.NET Core', 'Entity Framework Core', 'Swagger/OpenAPI', 'In-Memory Database'],
     role: 'Backend Developer',
-    year: 2023,
+    year: 2024,
     type: 'RESTful APIs',
     level: 'Intermediate',
     image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
-    githubUrl: 'https://github.com/jerkey06/task-api'
+    githubUrl: 'https://github.com/jerkey06/Task-Gestion-API'
   },
   {
     id: 5,
