@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import { ProjectCard } from '../ui/ProjectCard';
 import { projects } from '../../data/projects';
-import { Filter } from 'lucide-react';
+import { Filter, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ProjectFilters.css';
 
@@ -14,6 +12,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
   const [selectedYear, setSelectedYear] = useState('Any Year');
   const [selectedLanguage, setSelectedLanguage] = useState('All Languages');
   const [showFilters, setShowFilters] = useState(false);
+  const [visibleProjects, setVisibleProjects] = useState(4); // Initially show 4 projects
 
   const filteredProjects = projects.filter(project => {
     const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -23,6 +22,50 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
     const matchesYear = selectedYear === 'Any Year' || project.year.toString() === selectedYear;
     return matchesSearch && matchesType && matchesLevel && matchesYear;
   });
+
+  const displayedProjects = filteredProjects.slice(0, visibleProjects);
+  const hasMoreProjects = visibleProjects < filteredProjects.length;
+
+  const handleShowMore = () => {
+    setVisibleProjects(prev => Math.min(prev + 4, filteredProjects.length));
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hover: {
+      scale: 1.05,
+      y: -2,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    },
+    tap: {
+      scale: 0.95
+    }
+  };
 
   return (
     <div id={id} className="py-20">
@@ -37,7 +80,7 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="space-y-4 mb-8"
+          className="space-y-4 mb-12"
         >
           <div className="flex gap-4">
             <motion.input
@@ -119,21 +162,68 @@ export const Projects: React.FC<{ id: string }> = ({ id }) => {
           </AnimatePresence>
         </motion.div>
 
-        {/* Projects Slider */}
-        <div className="w-full overflow-hidden">
-          <Swiper
-            slidesPerView="auto"
-            spaceBetween={32}
-            className="!overflow-visible !pb-12"
-            style={{ width: '100%' }}
-          >
-            {filteredProjects.map(project => (
-              <SwiperSlide key={project.id} style={{ width: 'auto', maxWidth: '100%', flex: '0 0 300px' }}>
+        {/* Projects Grid */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-12"
+        >
+          <AnimatePresence>
+            {displayedProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                variants={itemVariants}
+                layout
+                className="w-full"
+              >
                 <ProjectCard project={project} />
-              </SwiperSlide>
+              </motion.div>
             ))}
-          </Swiper>
-        </div>
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Show More Button */}
+        <AnimatePresence>
+          {hasMoreProjects && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="flex justify-center"
+            >
+              <motion.button
+                onClick={handleShowMore}
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+                className="neobrutalist-button bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 px-8 py-4 flex items-center space-x-2 text-lg font-bold"
+              >
+                <span>Show More Projects</span>
+                <motion.div
+                  animate={{ y: [0, 3, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <ChevronDown size={24} />
+                </motion.div>
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Results Info */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-center mt-8 opacity-70"
+        >
+          <p>
+            Showing {displayedProjects.length} of {filteredProjects.length} projects
+            {filteredProjects.length !== projects.length && ` (filtered from ${projects.length} total)`}
+          </p>
+        </motion.div>
       </div>
     </div>
   );
