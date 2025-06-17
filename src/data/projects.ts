@@ -19,7 +19,7 @@ export const projects: Project[] = [
     type: 'Networking',
     level: 'Beginner',
     image: 'https://www.cs.dartmouth.edu/~campbell/cs50/ethernet.jpg',
-    githubUrl: 'https://github.com/yourusername/server-tcp',
+    githubUrl: 'https://github.com/jerkey06/TCP-server',
     projectUrl: '',
   },
   {
@@ -131,6 +131,6 @@ export const projects: Project[] = [
     type: 'Web Application',
     level: 'Beginner',
     image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
-    githubUrl: 'https://github.com/jerkey06/portfolio'
+    githubUrl: 'https://github.com/jerkey06/portafolioweb4'
   }
 ];
