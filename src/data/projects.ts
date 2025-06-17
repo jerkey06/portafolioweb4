@@ -87,24 +87,30 @@ export const projects: Project[] = [
   },
   {
     id: 5,
-    title: 'IoT Dashboard',
-    description: 'A real-time dashboard for monitoring IoT devices with data visualization and alert systems.',
+    title: 'Distributed Log Analyzer',
+    description: 'A distributed log analysis system developed in Rust for robust, real-time processing and analytics of log data across multiple services.',
     keyFeatures: [
-      'Real-time device monitoring',
-      'Interactive data visualizations',
-      'Custom alert configurations',
-      'Device management interface',
-      'Historical data analysis',
-      'Export functionality',
-      'Mobile-responsive design'
+      'Distributed architecture with aggregation server and log dispatch client',
+      'RESTful API for log ingestion, querying, and metrics',
+      'Persistent storage using SQLite for efficient retrieval',
+      'Real-time metrics and alerting system',
+      'Error pattern detection with regular expressions',
+      'Automated performance and error spike analysis',
+      'Advanced filtering, keyword search, and pagination for queries',
+      'Aggregated metrics and historical time series data',
+      'CLI client for log submission, test data generation, and querying',
+      'Highly concurrent and scalable design'
     ],
-    technologies: ['React', 'D3.js', 'WebSocket', 'Node.js', 'InfluxDB', 'MQTT', 'Docker'],
-    role: 'Full Stack Developer',
-    year: 2023,
-    type: 'IoT Integrations',
+    technologies: [
+      'Rust', 'Tokio', 'Axum', 'SQLx', 'Serde', 'Chrono', 'UUID', 'Regex', 'DashMap', 'Tracing', 'SQLite'
+    ],
+    role: 'Backend Developer',
+    year: 2024,
+    type: 'Distributed Systems',
     level: 'Advanced',
-    image: 'https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&w=800',
-    githubUrl: 'https://github.com/jerkey06/iot-dashboard'
+    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
+    githubUrl: 'https://github.com/jerkey06/Distributed-Log-Analyzer',
+    projectUrl: '',
   },
   {
     id: 6,
