@@ -61,7 +61,7 @@ export const projects: Project[] = [
     year: 2024,
     type: 'Web Application',
     level: 'Intermediate',
-    image: 'public/image2.png',
+    image: 'https://github.com/jerkey06/weather-time/blob/main/assets/Screenshot%202025-06-16%20150620.png?raw=true',
     githubUrl: 'https://github.com/jerkey06/weather-time',
     projectUrl: 'https://weather-time-mauve.vercel.app/'
   },
@@ -82,7 +82,7 @@ export const projects: Project[] = [
     year: 2024,
     type: 'RESTful APIs',
     level: 'Intermediate',
-    image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://github.com/jerkey06/Task-Gestion-API/blob/main/assets/capture.png?raw=true',
     githubUrl: 'https://github.com/jerkey06/Task-Gestion-API'
   },
   {
