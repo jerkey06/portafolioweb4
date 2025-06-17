@@ -40,7 +40,7 @@ export const projects: Project[] = [
     year: 2025,
     type: 'Machine Learning',
     level: 'Intermediate',
-    image: 'public/videoProcessor.png',
+    image: 'https://github.com/jerkey06/video-processor/blob/main/assets/Logo.png?raw=true',
     githubUrl: 'https://github.com/jerkey06/video-processor',
   },
   {
