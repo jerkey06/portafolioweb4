@@ -114,28 +114,6 @@ export const projects: Project[] = [
   },
   {
     id: 6,
-    title: 'Chat Application',
-    description: 'A real-time chat application with multiple rooms, file sharing, and modern UI design.',
-    keyFeatures: [
-      'Real-time messaging',
-      'Multiple chat rooms',
-      'File and image sharing',
-      'User presence indicators',
-      'Message history',
-      'Emoji reactions',
-      'Dark/light theme toggle'
-    ],
-    technologies: ['React', 'Socket.io', 'Node.js', 'Express', 'MongoDB', 'Cloudinary', 'JWT'],
-    role: 'Full Stack Developer',
-    year: 2023,
-    type: 'Real-time Systems',
-    level: 'Intermediate',
-    image: 'https://images.pexels.com/photos/267350/pexels-photo-267350.jpeg?auto=compress&cs=tinysrgb&w=800',
-    githubUrl: 'https://github.com/jerkey06/chat-app',
-    projectUrl: 'https://chat-app-demo.vercel.app'
-  },
-  {
-    id: 7,
     title: 'Portfolio Website',
     description: 'A modern, responsive portfolio website showcasing projects and skills with smooth animations.',
     keyFeatures: [
@@ -154,26 +132,5 @@ export const projects: Project[] = [
     level: 'Beginner',
     image: 'https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800',
     githubUrl: 'https://github.com/jerkey06/portfolio'
-  },
-  {
-    id: 8,
-    title: 'Microservices Architecture',
-    description: 'A scalable microservices architecture with API Gateway, service discovery, and containerization.',
-    keyFeatures: [
-      'API Gateway implementation',
-      'Service discovery with Consul',
-      'Load balancing',
-      'Circuit breaker pattern',
-      'Distributed logging',
-      'Health monitoring',
-      'Auto-scaling capabilities'
-    ],
-    technologies: ['Docker', 'Kubernetes', 'Node.js', 'Redis', 'Consul', 'Nginx', 'Prometheus'],
-    role: 'DevOps Engineer',
-    year: 2023,
-    type: 'Microservices',
-    level: 'Advanced',
-    image: 'https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800',
-    githubUrl: 'https://github.com/jerkey06/microservices-demo'
   }
 ];
