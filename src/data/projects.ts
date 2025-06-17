@@ -67,27 +67,6 @@ export const projects: Project[] = [
   },
   {
     id: 4,
-    title: 'E-Commerce Platform',
-    description: 'A full-featured e-commerce platform with modern design, secure payments, and comprehensive admin dashboard.',
-    keyFeatures: [
-      'Product catalog with search and filters',
-      'Shopping cart and checkout process',
-      'User authentication and profiles',
-      'Order management system',
-      'Payment integration with Stripe',
-      'Admin dashboard for inventory',
-      'Email notifications'
-    ],
-    technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Stripe', 'NextAuth', 'TailwindCSS'],
-    role: 'Full Stack Developer',
-    year: 2024,
-    type: 'E-commerce',
-    level: 'Advanced',
-    image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-    githubUrl: 'https://github.com/jerkey06/ecommerce-platform',
-  },
-  {
-    id: 5,
     title: 'TaskGestionAPI - Task Management API',
     description: 'A RESTful API built with .NET 9 for efficient CRUD operations for task management, featuring interactive API documentation via Swagger.',
     keyFeatures: [
@@ -107,7 +86,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/jerkey06/Task-Gestion-API'
   },
   {
-    id: 6,
+    id: 5,
     title: 'IoT Dashboard',
     description: 'A real-time dashboard for monitoring IoT devices with data visualization and alert systems.',
     keyFeatures: [
@@ -128,7 +107,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/jerkey06/iot-dashboard'
   },
   {
-    id: 7,
+    id: 6,
     title: 'Chat Application',
     description: 'A real-time chat application with multiple rooms, file sharing, and modern UI design.',
     keyFeatures: [
@@ -150,7 +129,7 @@ export const projects: Project[] = [
     projectUrl: 'https://chat-app-demo.vercel.app'
   },
   {
-    id: 8,
+    id: 7,
     title: 'Portfolio Website',
     description: 'A modern, responsive portfolio website showcasing projects and skills with smooth animations.',
     keyFeatures: [
@@ -171,7 +150,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/jerkey06/portfolio'
   },
   {
-    id: 9,
+    id: 8,
     title: 'Microservices Architecture',
     description: 'A scalable microservices architecture with API Gateway, service discovery, and containerization.',
     keyFeatures: [
