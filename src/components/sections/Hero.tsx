@@ -55,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               <motion.a 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/public/cv/rwservlet.pdf" 
+                href="public/cv/CV_EmilianoPonce_DesarrolladorTrainee.pdf" 
                 download
                 className="w-full sm:w-auto neobrutalist-button bg-zinc-700 dark:bg-zinc-300 text-white dark:text-zinc-900 px-6 py-3 flex items-center justify-center space-x-2"
               >
