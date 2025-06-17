@@ -102,7 +102,7 @@ export const projects: Project[] = [
       'Highly concurrent and scalable design'
     ],
     technologies: [
-      'Rust', 'Tokio', 'Axum', 'SQLx', 'Serde', 'Chrono', 'UUID', 'Regex', 'DashMap', 'Tracing', 'SQLite'
+      'Rust', 'Tokio', 'Axum', 'SQLite', 'SQLx', 'Serde', 'Chrono', 'UUID', 'Regex', 'DashMap', 'Tracing'
     ],
     role: 'Backend Developer',
     year: 2024,
