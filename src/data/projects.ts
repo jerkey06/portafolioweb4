@@ -18,7 +18,7 @@ export const projects: Project[] = [
     year: 2024,
     type: 'Networking',
     level: 'Beginner',
-    image: 'https://raw.githubusercontent.com/yourusername/server-tcp/main/assets/server-tcp.png',
+    image: 'https://www.cs.dartmouth.edu/~campbell/cs50/ethernet.jpg',
     githubUrl: 'https://github.com/yourusername/server-tcp',
     projectUrl: '',
   },
